@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: black;
+}
+
+.keys {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  color: white;
+}
+
+.key {
+  margin: 5px;
+  padding: 10px;
+  font-size: 1.9rem;
+  display: grid;
+  text-align: center;
+  border: solid 1px #e8e8e8;
+  transition: all 0.07s;
+}
+
+.playing {
+  transform: scale(1.3);
+  border: solid 1px orange;
+}
+
+kbd {
+  font-size: 46px;
+}
+
+span {
+  color: papayawhip;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: Uppercase;
+}
+
+.carlos-box {
+  height: 184px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20vh;
+}
+
+.carlos {
+  background-image: url(./faces/carlos.png);
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 200px;
+  transition: all 0.9s;
+}
+
+.carlos-hey {
+  background-image: url(./faces/carlos-hey.png);
+}
+
+.carlos-hey-hey {
+  background-image: url(./faces/carlos-heyhey.png);
+}
+
+.carlos-wasa {
+  background-image: url(./faces/wasa.png);
+}
+
+.carlos-wasup {
+  background-image: url(./faces/carlos-heyhey.png);
+}
+
+.carlos-bitconect {
+  background-image: url(./faces/bitconect.png);
+}
+
+.carlos-default {
+  background-image: url(./faces/default.png);
+}

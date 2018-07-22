@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Carlos Speaks</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+      <div class="carlos-box">
+        <div class="carlos">
+
+        </div>
+
+      </div>
+
+
+    <div class="keys">
+      <!-- Datakey value is derived from keycode.info -->
+      <div class="key" data-key="65">
+        <kbd>A</kbd>
+        <span class="sound">Hey hey</span>
+      </div>
+      <div class="key" data-key="83">
+        <kbd>S</kbd>
+        <span class="sound">heeeey</span>
+      </div>
+      <div class="key" data-key="68">
+        <kbd>D</kbd>
+        <span class="sound">Wasa</span>
+      </div>
+      <div class="key" data-key="70">
+        <kbd>F</kbd>
+        <span class="sound">Wasup</span>
+      </div>
+      <div class="key" data-key="71">
+        <kbd>G</kbd>
+        <span class="sound">Bitconneeect</span>
+      </div>
+
+    </div>
+
+    <!-- Uses the same data-key to play the audio files (data-key is a made up key) -->
+    <audio class="hey" data-key="65" src="sounds/hey-hey.m4a"></audio>
+    <audio class="heeey" data-key="83" src="sounds/heeey.m4a"></audio>
+    <audio class="wasa" data-key="68" src="sounds/wasa.m4a"></audio>
+    <audio class="wasup" data-key="70" src="sounds/wasup.m4a"></audio>
+    <audio class="bitconect" data-key="71" src="sounds/bitconect.m4a"></audio>
+  </body>
+<script>
+window.addEventListener("keydown", function(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  const carlos = document.querySelector(".carlos");
+  if (!audio) return; // this will stop the function from being called on elements not assigned
+  audio.currentTime = 0; // this will rewind the sample to 0 everytime clicked
+  audio.play();
+  key.classList.add("playing"); // add a class with js
+  if (`${e.keyCode}` == 65) {
+    carlos.classList.add("carlos-hey"); // add class to carlos
+  } else if (`${e.keyCode}` == 83) {
+    carlos.classList.add("carlos-hey-hey"); // add class to carlos
+  } else if (`${e.keyCode}` == 68) {
+    carlos.classList.add("carlos-wasa"); // add class to carlos
+  } else if (`${e.keyCode}` == 70) {
+    carlos.classList.add("carlos-wasup"); // add class to carlos
+  } else if (`${e.keyCode}` == 71) {
+    carlos.classList.add("carlos-bitconect"); // add class to carlos
+  } else {
+    carlos.classList.add("carlos-default"); // add class to carlos
+  }
+});
+
+function removeTransition(e) {
+  if (e.propertyName != "transform") return; //skip if no transform property
+  this.classList.remove("playing");
+}
+
+const hey = document.querySelector(".hey");
+hey.onended = function() {
+  const carlos = document.querySelector(".carlos");
+  carlos.classList.remove("carlos-hey");
+};
+
+const heyhey = document.querySelector(".heeey");
+heyhey.onended = function() {
+  const carlos = document.querySelector(".carlos");
+  carlos.classList.remove("carlos-hey-hey");
+};
+
+const wasa = document.querySelector(".wasa");
+wasa.onended = function() {
+  const carlos = document.querySelector(".carlos");
+  carlos.classList.remove("carlos-wasa");
+};
+
+const wasup = document.querySelector(".wasup");
+wasup.onended = function() {
+  const carlos = document.querySelector(".carlos");
+  carlos.classList.remove("carlos-wasup");
+};
+
+const bitconect = document.querySelector(".bitconect");
+bitconect.onended = function() {
+  const carlos = document.querySelector(".carlos");
+  carlos.classList.remove("carlos-bitconect");
+};
+
+const keys = document.querySelectorAll(".key");
+keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+</script>
+</html>
